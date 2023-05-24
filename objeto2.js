@@ -15,3 +15,5 @@ for(let chave in Cliente){
     }
 
 }
+
+//Faremos de outra forma também log abaixo
