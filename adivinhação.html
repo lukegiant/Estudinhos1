@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+    <input/>
+        <button id="button">Tente adivinhar o meu segredo</button>
+ 
+
+    <script>
+        function getRandom(){
+            return Math.floor(Math.random() * 10);
+        }
+        
+
+        function sorteio(quant){
+            var array = [];
+
+            var cont = 1;
+
+            while(cont <= quant){
+                var aleatorio = getRandom();
+                repetido = false;
+                if(aleatorio !== 0){
+                for(var posicao = 0; posicao < array.length; posicao++){
+                    if (array[posicao] == aleatorio){
+                        repetido = true;
+                        break;
+                    }
+                }
+                if(repetido == false){
+                    array.push(aleatorio);
+                    cont++;
+                }
+            }
+            }
+            return array;
+        }
+
+        let array = sorteio(5);
+
+        console.log(array); 
+
+        var input = document.querySelector("input");
+        input.focus();
+
+        function verifica(){
+
+            var achou = false;
+
+            for(var posicao = 0; posicao < array.length; posicao++){
+                if(input.value == array[posicao]){
+                alert("Parabéns! Você acertou!");
+                achou = true;   
+                break;
+                }
+            }  
+            if (achou == false){
+                alert("Você ERROU!!!");
+            }
+            input.value = "";
+            input.focus();
+        }
+        
+        document.getElementById("button").onclick = verifica;
+
+    </script>

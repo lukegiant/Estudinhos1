@@ -1,0 +1,80 @@
+//document.getElementById("nome").value = "";
+//document.getElementById("nome").focus();
+
+/*function alerta() {
+    alert("Dados enviados com sucesso!");
+    alert("Seu nome é " + nome);
+    alert("Sua idade é: " + idade);
+}*/
+
+/*function checagem(contador){
+check = true;
+if()
+
+}*/
+
+let nomes = ["Lucas", "Dianne", "Diogo", "Denise"];
+let idades = [35, 31, 36, 32];
+
+let planilha = [nomes, idades];
+
+//Função para registro dos dados nos dois arrays.
+function registro() {
+
+    nomes.push(nome.value);
+    idades.push(parseInt(idade.value));
+    alert("Nome e idade salvo com sucesso!");
+    //Ele executa a ação de 'empurrar' os dados para a última posição do array e exibe o alerta.
+    console.log(nomes, idades);
+    //Após isso ele limpa os dois campos e dá o foco no campo 'nome'
+    document.getElementById("nome").value = "";
+    document.getElementById("idade").value = "";
+    nome.focus();
+}
+
+let nome = document.getElementById("nome"); //Variável nome recebe o dado do input "nome"
+let idade = document.getElementById("idade"); //Variável idade recebe o dado do input "idade"
+let busca = document.getElementById("query"); //Variável para entrada de um nome para pesquisa.
+document.getElementById("nome").value = ""; //nome começa vazio 
+document.getElementById("idade").value = ""; // idade começa vazio
+document.getElementById("query").value = ""; // Busca começa vazio.
+nome.focus();
+
+//Função para listar os nome e idades cadastrados no array.
+function listar() {
+
+    let lista = document.getElementById('lista');
+    
+    for(var i = 0; i < nomes.length; i++){
+        let item = document.createElement('li');
+        item.appendChild(document.createTextNode(nomes[i]));
+        lista.appendChild(item);
+        // document.getElementById("resultNomes").innerHTML = nomes[contador];
+        // document.getElementById("resultIdades").innerHTML = idades[contador];
+        // document.write(" " + nomes[contador] + " ");
+        // document.write(" " + idades[contador] + " ");
+    }
+}
+//Função para pesquisar de um nome está cadastrado no array.
+function pesquisar() {
+
+    if (planilha[0].includes(busca.value)) {
+
+        console.log("O nome " + busca.value + " está cadastrado.");
+        document.getElementById("query").value = "";
+    } else {
+        console.log("Aluno não encontrado!");
+        document.getElementById("query").value = "";
+    }
+
+}
+
+
+var lista = document.getElementById("mostrar");
+lista.addEventListener("click", listar);
+
+var enviar = document.getElementById("botao"); //Ação de clicar para chamar a função "Registro".
+enviar.addEventListener("click", registro);
+
+var search = document.getElementById("btn");
+search.addEventListener("click", pesquisar);

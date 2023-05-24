@@ -1,0 +1,59 @@
+var array = inserir(5);
+
+function gerador() { //função que gera o número aleatório e arredonda
+    return Math.round(Math.random() * 10);
+}
+console.log(gerador());
+
+function inserir(qtd) {
+
+    var array = []
+    var contador = 0
+
+    while (contador < qtd) {
+
+        var Aleatorio = gerador(); //salva o número gerado em uma variável
+        var repetido = false; //variável que é usada para verificar se o número já foi gerado e inserido ao array
+
+        if (Aleatorio !== 0) { //aqui verifica se o número gerado não é "0" para ser inserido ao array.
+
+            for (var posicao = 0; posicao < array.length; posicao++) {
+
+                if (array[posicao] == Aleatorio) {
+                    var repetido = true;
+                    break;
+                }
+
+            }
+
+
+            if (repetido == false) {
+                array.push(Aleatorio);
+                contador++;
+            }
+        }
+
+    }
+    return array;
+
+}
+console.log(array);
+
+var entrada = document.getElementById("entrada");
+
+function verifica() {
+    var achou = false
+    for (var posicao = 0; posicao < array.length; posicao++) {
+        if (entrada.value == array[posicao]) {
+            alert("Você acertou!");
+            achou = true;
+            break;
+        }
+    }
+    if (achou == false) {
+        alert("Você ERROU!");
+    }
+}
+
+var btn = document.getElementById("botao");
+btn.addEventListener("click", verifica);
