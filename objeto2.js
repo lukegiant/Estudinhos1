@@ -15,5 +15,4 @@ for(let chave in Cliente){
     }
 
 }
-
-//Faremos de outra forma também log abaixo
+//Aqui faremos um teste de alteração para commit e push no github
